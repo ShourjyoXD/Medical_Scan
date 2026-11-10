@@ -177,7 +177,7 @@ medical-image-diagnosis/
 │   │   └── schemas/
 │   └── tests/
 │
-├── ml/
+├── dl/
 │   ├── mri/
 │   │   ├── models/
 │   │   ├── preprocessing/
