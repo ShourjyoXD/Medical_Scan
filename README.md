@@ -92,7 +92,7 @@ Receive the prediction and scores from the model. - Send the result back
 to the frontend. - Handle errors if a model or file is unavailable. -
 Test both workflows.
 
-**Deliverables:** - FastAPI backend. - API endpoints. - Model routing
+**Deliverables:** - Node backend. - API endpoints. - Model routing
 code. - Input validation. - Integration tests.
 
 ## How the application works
