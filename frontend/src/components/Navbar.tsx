@@ -9,18 +9,20 @@ export default function Navbar() {
   const isHome = pathname === '/';
 
   return (
-    <header className="bg-white border-b border-border sticky top-0 z-50">
+    <header className="bg-surface-card border-b border-border sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 text-primary hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2.5 text-[#EEF2F4] hover:opacity-90 transition-opacity"
           >
-            <Activity className="w-6 h-6 text-primary-muted" strokeWidth={1.75} />
-            <span className="font-semibold text-sm sm:text-base leading-tight">
+            <div className="w-8 h-8 rounded-lg bg-[#151A1D] border border-border flex items-center justify-center">
+              <Activity className="w-4.5 h-4.5 text-brand" strokeWidth={2} />
+            </div>
+            <span className="font-semibold text-sm sm:text-base leading-tight tracking-tight">
               Medical Image{' '}
-              <span className="text-primary-muted">Diagnosis Assistant</span>
+              <span className="text-brand font-medium">Diagnosis Assistant</span>
             </span>
           </Link>
 
@@ -29,19 +31,19 @@ export default function Navbar() {
             {!isHome && (
               <Link
                 to="/"
-                className="text-muted hover:text-primary transition-colors"
+                className="text-muted hover:text-[#EEF2F4] transition-colors"
               >
                 Home
               </Link>
             )}
-            <span className="text-xs text-muted bg-surface px-2 py-1 rounded border border-border">
+            <span className="text-xs text-muted bg-[#121619] px-2.5 py-1 rounded-md border border-border font-normal">
               Academic Project
             </span>
           </nav>
 
           {/* Mobile menu button */}
           <button
-            className="sm:hidden p-2 rounded-md text-muted hover:text-primary hover:bg-surface transition-colors"
+            className="sm:hidden p-2 rounded-lg text-muted hover:text-[#EEF2F4] hover:bg-surface-elevated transition-colors"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
@@ -52,17 +54,17 @@ export default function Navbar() {
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="sm:hidden border-t border-border bg-white px-4 py-3 space-y-2">
+        <div className="sm:hidden border-t border-border bg-surface-card px-4 py-3 space-y-2">
           {!isHome && (
             <Link
               to="/"
-              className="block text-sm font-medium text-muted hover:text-primary transition-colors"
+              className="block text-sm font-medium text-muted hover:text-[#EEF2F4] transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               Home
             </Link>
           )}
-          <p className="text-xs text-muted">Academic Project – not for clinical use</p>
+          <p className="text-xs text-muted">Academic Project &ndash; not for clinical use</p>
         </div>
       )}
     </header>

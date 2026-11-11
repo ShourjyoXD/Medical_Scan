@@ -68,8 +68,8 @@ export default function ImageUploader({ onFileSelected, disabled = false }: Prop
   );
 
   const borderClass = dragging
-    ? 'border-primary-muted bg-primary/5'
-    : 'border-border hover:border-primary-muted hover:bg-surface';
+    ? 'border-brand bg-brand/subtle'
+    : 'border-border-strong hover:border-brand/70 hover:bg-surface-elevated';
 
   return (
     <div className="space-y-3">
@@ -84,22 +84,24 @@ export default function ImageUploader({ onFileSelected, disabled = false }: Prop
         onClick={() => !disabled && inputRef.current?.click()}
         onKeyDown={onKeyDown}
         className={`
-          relative flex flex-col items-center justify-center gap-3
-          border-2 border-dashed rounded-2xl p-10 sm:p-14
-          transition-colors duration-150 cursor-pointer select-none
+          relative flex flex-col items-center justify-center gap-3.5
+          border-2 border-dashed rounded-2xl p-10 sm:p-14 bg-surface-card
+          transition-all duration-200 cursor-pointer select-none
           ${borderClass}
-          ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
+          ${disabled ? 'opacity-40 cursor-not-allowed' : ''}
         `}
       >
-        <UploadCloud
-          className={`w-10 h-10 ${dragging ? 'text-primary-muted' : 'text-muted/50'} transition-colors`}
-          strokeWidth={1.5}
-        />
+        <div className="w-13 h-13 rounded-2xl bg-surface-inner border border-border flex items-center justify-center p-3">
+          <UploadCloud
+            className={`w-7 h-7 ${dragging ? 'text-brand' : 'text-brand/80'} transition-colors`}
+            strokeWidth={1.75}
+          />
+        </div>
         <div className="text-center">
-          <p className="text-sm font-medium text-primary">
-            {dragging ? 'Drop the image here' : 'Drag & drop your image here'}
+          <p className="text-sm font-medium text-[#EEF2F4]">
+            {dragging ? 'Drop the medical image here' : 'Drag & drop your medical scan here'}
           </p>
-          <p className="text-xs text-muted mt-1">or</p>
+          <p className="text-xs text-muted mt-1">or click to browse files</p>
         </div>
 
         <button
@@ -109,8 +111,8 @@ export default function ImageUploader({ onFileSelected, disabled = false }: Prop
             e.stopPropagation();
             inputRef.current?.click();
           }}
-          className="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-lg
-            hover:bg-primary-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-1 px-5 py-2 bg-brand text-[#EEF2F4] text-sm font-medium rounded-xl
+            hover:bg-brand-hover transition-colors shadow-sm disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Browse files
         </button>
@@ -127,15 +129,15 @@ export default function ImageUploader({ onFileSelected, disabled = false }: Prop
       </div>
 
       {/* Format / size guidance */}
-      <p className="text-xs text-muted text-center">
-        Supported formats: {ACCEPTED_FORMATS_LABEL} &nbsp;&middot;&nbsp; Max size: {MAX_SIZE_LABEL}
+      <p className="text-xs text-muted/75 text-center">
+        Supported formats: <span className="text-[#EEF2F4]">{ACCEPTED_FORMATS_LABEL}</span> &nbsp;&middot;&nbsp; Max size: <span className="text-[#EEF2F4]">{MAX_SIZE_LABEL}</span>
       </p>
 
       {/* Validation error */}
       {localError && (
-        <p role="alert" className="text-xs text-red-600 font-medium text-center">
+        <div role="alert" className="p-2.5 rounded-lg bg-crimson/subtle border border-crimson/30 text-xs text-crimson font-medium text-center">
           {localError}
-        </p>
+        </div>
       )}
     </div>
   );

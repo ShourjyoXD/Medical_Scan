@@ -58,7 +58,7 @@ export default function Results() {
         {/* Back link */}
         <Link
           to={`/upload/${modality}`}
-          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-[#EEF2F4] transition-colors mb-6"
         >
           <ChevronLeft className="w-4 h-4" />
           Back to upload
@@ -66,8 +66,8 @@ export default function Results() {
 
         {/* Page title */}
         <div className="mb-7">
-          <h1 className="text-xl font-bold text-primary">Analysis Results</h1>
-          <p className="text-sm text-muted mt-0.5">
+          <h1 className="text-2xl font-bold text-[#EEF2F4] tracking-tight">Analysis Results</h1>
+          <p className="text-sm text-brand font-medium mt-0.5">
             {MODALITY_LABELS[modality]}
           </p>
         </div>
@@ -77,17 +77,18 @@ export default function Results() {
           {isMock && <MockModeBanner />}
 
           {/* Uploaded image */}
-          <div className="rounded-2xl border border-border bg-white shadow-card overflow-hidden">
-            <div className="px-5 py-4 border-b border-border-light">
-              <h2 className="text-sm font-semibold text-primary">
+          <div className="rounded-2xl border border-border bg-surface-card shadow-card overflow-hidden">
+            <div className="px-5 py-3.5 border-b border-border bg-surface-card flex items-center justify-between">
+              <h2 className="text-sm font-semibold text-[#EEF2F4]">
                 Uploaded Image
               </h2>
+              <span className="text-xs text-muted">Original Scan</span>
             </div>
-            <div className="bg-gray-50 flex items-center justify-center min-h-48 max-h-72 overflow-hidden p-4">
+            <div className="bg-surface-inner flex items-center justify-center min-h-56 max-h-76 overflow-hidden p-4">
               <img
                 src={previewUrl}
                 alt="Uploaded scan"
-                className="max-h-64 max-w-full object-contain"
+                className="max-h-68 max-w-full object-contain rounded"
               />
             </div>
           </div>
@@ -103,9 +104,9 @@ export default function Results() {
 
           {/* Grad-CAM – only rendered when backend provides a real heatmap URL */}
           {showGradCam && (
-            <div className="rounded-2xl border border-border bg-white shadow-card overflow-hidden">
-              <div className="px-5 py-4 border-b border-border-light">
-                <h2 className="text-sm font-semibold text-primary">
+            <div className="rounded-2xl border border-border bg-surface-card shadow-card overflow-hidden">
+              <div className="px-5 py-3.5 border-b border-border bg-surface-card">
+                <h2 className="text-sm font-semibold text-[#EEF2F4]">
                   Grad-CAM Explanation
                 </h2>
                 <p className="text-xs text-muted mt-0.5">
@@ -113,11 +114,11 @@ export default function Results() {
                   model's prediction.
                 </p>
               </div>
-              <div className="bg-gray-50 flex items-center justify-center min-h-48 max-h-72 overflow-hidden p-4">
+              <div className="bg-surface-inner flex items-center justify-center min-h-56 max-h-76 overflow-hidden p-4">
                 <img
                   src={result.explanation!.heatmap_url}
                   alt="Grad-CAM heatmap"
-                  className="max-h-64 max-w-full object-contain"
+                  className="max-h-68 max-w-full object-contain rounded"
                 />
               </div>
             </div>
@@ -130,17 +131,17 @@ export default function Results() {
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link
               to={`/upload/${modality}`}
-              className="flex-1 flex items-center justify-center gap-2 py-3 bg-primary text-white
-                text-sm font-semibold rounded-xl hover:bg-primary-light transition-colors shadow-sm"
+              className="flex-1 flex items-center justify-center gap-2 py-3 bg-brand text-[#EEF2F4]
+                text-sm font-semibold rounded-xl hover:bg-brand-hover transition-colors shadow-sm"
             >
               <RefreshCw className="w-4 h-4" />
               Analyse another image
             </Link>
             <Link
               to="/"
-              className="flex-1 flex items-center justify-center gap-2 py-3 bg-white text-primary
-                text-sm font-semibold rounded-xl border border-border hover:border-primary-muted
-                hover:bg-surface transition-colors shadow-sm"
+              className="flex-1 flex items-center justify-center gap-2 py-3 bg-surface-card text-[#EEF2F4]
+                text-sm font-semibold rounded-xl border border-border hover:border-brand
+                hover:bg-surface-elevated transition-colors shadow-sm"
             >
               <Home className="w-4 h-4" />
               Back to home

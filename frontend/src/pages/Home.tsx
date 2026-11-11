@@ -43,16 +43,16 @@ export default function Home() {
 
       <main className="flex-1">
         {/* ── Hero ──────────────────────────────────────────────────────── */}
-        <section className="bg-white border-b border-border">
+        <section className="bg-surface border-b border-border">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-primary-muted bg-primary/5 border border-primary/10 px-3 py-1 rounded-full mb-6">
+            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-brand bg-brand/subtle border border-brand/30 px-3.5 py-1 rounded-full mb-6">
               <Shield className="w-3.5 h-3.5" />
               Academic Research Project
             </span>
 
-            <h1 className="text-3xl sm:text-4xl font-bold text-primary leading-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl font-bold text-[#EEF2F4] leading-tight mb-4 tracking-tight">
               Medical Image{' '}
-              <span className="text-primary-muted">Diagnosis Assistant</span>
+              <span className="text-brand font-medium">Diagnosis Assistant</span>
             </h1>
 
             <p className="text-base sm:text-lg text-muted leading-relaxed max-w-2xl mx-auto mb-3">
@@ -61,7 +61,7 @@ export default function Home() {
               classification with confidence scores.
             </p>
 
-            <p className="text-sm text-muted max-w-xl mx-auto mb-10">
+            <p className="text-sm text-muted/80 max-w-xl mx-auto mb-10">
               Built as part of an academic project exploring convolutional neural
               networks for medical image classification.
             </p>
@@ -69,15 +69,15 @@ export default function Home() {
             <div className="flex flex-wrap gap-3 justify-center">
               <Link
                 to="/upload/xray"
-                className="px-6 py-3 bg-primary text-white text-sm font-semibold rounded-lg
-                  hover:bg-primary-light transition-colors shadow-sm"
+                className="px-6 py-3 bg-brand text-[#EEF2F4] text-sm font-semibold rounded-xl
+                  hover:bg-brand-hover transition-colors shadow-sm"
               >
                 Analyse X-ray
               </Link>
               <Link
                 to="/upload/mri"
-                className="px-6 py-3 bg-white text-primary text-sm font-semibold rounded-lg border
-                  border-border hover:border-primary-muted hover:bg-surface transition-colors shadow-sm"
+                className="px-6 py-3 bg-surface-card text-[#EEF2F4] text-sm font-semibold rounded-xl border
+                  border-border hover:border-brand hover:bg-surface-elevated transition-colors shadow-sm"
               >
                 Analyse Brain MRI
               </Link>
@@ -87,7 +87,7 @@ export default function Home() {
 
         {/* ── Scan cards ────────────────────────────────────────────────── */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-          <h2 className="text-xl font-semibold text-primary text-center mb-2">
+          <h2 className="text-xl font-semibold text-[#EEF2F4] text-center mb-2">
             Select Scan Type
           </h2>
           <p className="text-sm text-muted text-center mb-8">
@@ -113,9 +113,9 @@ export default function Home() {
         </section>
 
         {/* ── How it works ──────────────────────────────────────────────── */}
-        <section className="bg-white border-y border-border">
+        <section className="bg-surface-card border-y border-border">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-            <h2 className="text-xl font-semibold text-primary text-center mb-2">
+            <h2 className="text-xl font-semibold text-[#EEF2F4] text-center mb-2">
               How It Works
             </h2>
             <p className="text-sm text-muted text-center mb-10">
@@ -126,14 +126,14 @@ export default function Home() {
               {HOW_IT_WORKS.map(({ step, Icon, title, description }) => (
                 <div key={step} className="text-center sm:text-left">
                   <div className="flex sm:flex-col items-center sm:items-start gap-3 mb-3">
-                    <div className="w-9 h-9 rounded-lg bg-primary/5 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-4.5 h-4.5 text-primary-muted" strokeWidth={1.75} />
+                    <div className="w-9 h-9 rounded-lg bg-surface-inner border border-border flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-4.5 h-4.5 text-brand" strokeWidth={1.75} />
                     </div>
-                    <span className="text-xs font-semibold text-primary-muted uppercase tracking-widest">
+                    <span className="text-xs font-semibold text-brand uppercase tracking-widest">
                       Step {step}
                     </span>
                   </div>
-                  <h3 className="text-sm font-semibold text-primary mb-1">{title}</h3>
+                  <h3 className="text-sm font-semibold text-[#EEF2F4] mb-1">{title}</h3>
                   <p className="text-xs text-muted leading-relaxed">{description}</p>
                 </div>
               ))}

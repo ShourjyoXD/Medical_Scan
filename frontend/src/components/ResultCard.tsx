@@ -12,20 +12,20 @@ export default function ResultCard({ result }: Props) {
   const isHighConfidence = topScore >= 0.75;
 
   return (
-    <div className="rounded-2xl border border-border bg-white shadow-card overflow-hidden">
+    <div className="rounded-2xl border border-border bg-surface-card shadow-card overflow-hidden">
       {/* Header band */}
-      <div className="bg-primary px-6 py-4">
+      <div className="bg-surface-inner border-b border-border px-6 py-4">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-xs font-medium text-primary-muted/70 uppercase tracking-wider mb-1">
+            <p className="text-xs font-medium text-muted uppercase tracking-wider mb-0.5">
               Modality
             </p>
-            <p className="text-white font-semibold">
+            <p className="text-[#EEF2F4] font-semibold text-base">
               {MODALITY_LABELS[result.modality]}
             </p>
           </div>
           {result.model_name && (
-            <span className="text-xs text-primary-muted/80 bg-white/10 px-3 py-1 rounded-full border border-white/20">
+            <span className="text-xs text-brand bg-brand/subtle px-3 py-1 rounded-full border border-brand/30 font-medium font-mono">
               {result.model_name}
             </span>
           )}
@@ -36,16 +36,16 @@ export default function ResultCard({ result }: Props) {
       <div className="px-6 py-5 space-y-5">
         {/* Predicted class */}
         <div>
-          <p className="text-xs font-medium text-muted uppercase tracking-wider mb-2">
+          <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
             Predicted Class
           </p>
           <div className="flex items-center gap-3">
             {isHighConfidence ? (
-              <CheckCircle2 className="w-6 h-6 text-primary-muted flex-shrink-0" strokeWidth={1.75} />
+              <CheckCircle2 className="w-6 h-6 text-mint flex-shrink-0" strokeWidth={2} />
             ) : (
-              <AlertCircle className="w-6 h-6 text-amber-500 flex-shrink-0" strokeWidth={1.75} />
+              <AlertCircle className="w-6 h-6 text-crimson flex-shrink-0" strokeWidth={2} />
             )}
-            <span className="text-2xl font-bold text-primary">
+            <span className="text-2xl font-bold text-[#EEF2F4] tracking-tight">
               {formatClassName(result.predicted_class)}
             </span>
           </div>
@@ -53,20 +53,20 @@ export default function ResultCard({ result }: Props) {
 
         {/* Confidence */}
         <div>
-          <p className="text-xs font-medium text-muted uppercase tracking-wider mb-2">
+          <p className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">
             Confidence
           </p>
           <div className="flex items-center gap-3">
             <span
-              className={`text-3xl font-bold ${
-                isHighConfidence ? 'text-primary' : 'text-amber-600'
+              className={`text-3xl font-bold tracking-tight ${
+                isHighConfidence ? 'text-mint' : 'text-crimson'
               }`}
             >
               {formatConfidence(topScore)}
             </span>
             {!isHighConfidence && (
-              <span className="text-xs text-amber-600 bg-amber-50 border border-amber-200 px-2 py-1 rounded">
-                Low confidence – interpret with caution
+              <span className="text-xs text-crimson bg-crimson/subtle border border-crimson/30 px-2.5 py-1 rounded-md font-medium">
+                Low confidence &ndash; interpret with caution
               </span>
             )}
           </div>

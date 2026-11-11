@@ -24,27 +24,29 @@ export default function ErrorMessage({
   return (
     <div
       role="alert"
-      className="flex flex-col sm:flex-row items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-4"
+      className="flex flex-col sm:flex-row items-start gap-3 rounded-xl border border-crimson/30 bg-crimson/subtle px-4 py-4 shadow-sm"
     >
-      <Icon
-        className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
-        strokeWidth={1.75}
-      />
+      <div className="w-8 h-8 rounded-lg bg-surface-inner border border-crimson/25 flex items-center justify-center flex-shrink-0">
+        <Icon
+          className="w-4.5 h-4.5 text-crimson"
+          strokeWidth={1.75}
+        />
+      </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-red-800">
+        <p className="text-sm font-semibold text-[#EEF2F4]">
           {kind === 'network'
             ? 'Connection error'
             : kind === 'file'
             ? 'File error'
             : 'An error occurred'}
         </p>
-        <p className="text-sm text-red-700 mt-1 leading-relaxed">{message}</p>
+        <p className="text-sm text-crimson mt-0.5 leading-relaxed">{message}</p>
 
         {onRetry && (
           <button
             type="button"
             onClick={onRetry}
-            className="mt-3 text-sm font-medium text-red-700 underline hover:no-underline transition-all"
+            className="mt-2.5 text-sm font-medium text-[#EEF2F4] hover:text-crimson underline transition-colors"
           >
             Try again
           </button>

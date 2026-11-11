@@ -102,21 +102,21 @@ export default function Upload() {
         {/* Back link */}
         <Link
           to="/"
-          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-primary transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-[#EEF2F4] transition-colors mb-6"
         >
           <ChevronLeft className="w-4 h-4" />
           Back to home
         </Link>
 
         {/* Page header */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-10 h-10 rounded-xl bg-primary/5 flex items-center justify-center">
-            <Icon className="w-5 h-5 text-primary-muted" strokeWidth={1.75} />
+        <div className="flex items-center gap-3.5 mb-8">
+          <div className="w-11 h-11 rounded-xl bg-surface-card border border-border flex items-center justify-center shadow-sm">
+            <Icon className="w-5 h-5 text-brand" strokeWidth={1.75} />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-primary">{label}</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-[#EEF2F4] tracking-tight">{label}</h1>
             <p className="text-xs text-muted mt-0.5">
-              Upload an image to begin analysis
+              Upload a single 2D scan to begin analysis
             </p>
           </div>
         </div>
@@ -174,8 +174,8 @@ export default function Upload() {
               type="button"
               onClick={handleAnalyse}
               disabled={!file || isAnalysing}
-              className="w-full py-3 bg-primary text-white text-sm font-semibold rounded-xl
-                hover:bg-primary-light transition-colors
+              className="w-full py-3.5 bg-brand text-[#EEF2F4] text-sm font-semibold rounded-xl
+                hover:bg-brand-hover transition-colors
                 disabled:opacity-40 disabled:cursor-not-allowed shadow-sm"
             >
               {file ? `Analyse ${label}` : 'Upload an image first'}
