@@ -22,7 +22,7 @@ async function runInference(modality, imagePath) {
         return await response.json();
       }
       const errText = await response.text();
-      throw new Error(`DL server returned ${response.status}: ${errText}`);
+      let m = errText; try { m = JSON.parse(errText).error || m; } catch {} const e = new Error(m); e.statusCode = response.status; e.status = response.status; throw e;
     } catch (err) {
       if (err.cause?.code !== "ECONNREFUSED" && !err.message.includes("fetch failed")) {
         throw err;

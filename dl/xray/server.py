@@ -35,6 +35,12 @@ class InferenceHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(payload)
+        except ValueError as ve:
+            err = json.dumps({"error": str(ve)}).encode("utf-8")
+            self.send_response(400)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(err)
         except Exception as exc:
             err = json.dumps({"error": str(exc)}).encode("utf-8")
             self.send_response(500)

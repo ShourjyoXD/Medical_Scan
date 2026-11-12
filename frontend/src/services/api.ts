@@ -13,7 +13,8 @@ async function handleResponse<T>(res: Response): Promise<T> {
     let message = `Server error: ${res.status} ${res.statusText}`;
     try {
       const body = await res.json();
-      if (body?.detail) message = String(body.detail);
+      if (body?.error) message = String(body.error);
+      else if (body?.detail) message = String(body.detail);
       else if (body?.message) message = String(body.message);
     } catch {
       // keep default message
