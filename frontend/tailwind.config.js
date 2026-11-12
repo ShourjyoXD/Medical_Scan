@@ -6,7 +6,7 @@ export default {
       colors: {
         background: '#121619', // Deep Mineral
         surface: {
-          DEFAULT: '#121619', // Deep Mineral
+          DEFAULT: 'transparent', // Deep Mineral canvas with subtle X-ray background
           card: '#1C2226',    // Elevated Obsidian
           elevated: '#22292E',
           inner: '#151A1D',   // Inset / viewport
